@@ -25,10 +25,14 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
       - name: Install dependencies & build
+        id: build
         run: |
           npm install
           npx @11ty/eleventy
+      - name: Verify _site contents
+        run: ls -lah ./_site
       - name: upload static site artifact
+        id: deployment
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./_site

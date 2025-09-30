@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>TheOrangeOne</ShortName>
+  <Description>TheOrangeOne</Description>
+  <InputEncoding>UTF-8</InputEncoding>
+  
+  <Image type="image/png">https://theorangeone.net/images/KJRu4XKZkuR15E0aAqUZPH_5nVc=/2/fill-100%7Cformat-png/Logo2_transparent_Large.png</Image>
+  
+  <Url type="text/html" template="https://theorangeone.net/go/?q={searchTerms}"/>
+  <Url type="application/x-suggestions+json" template="https://theorangeone.net/opensearch-suggestions/?q={searchTerms}"/>
+</OpenSearchDescription>

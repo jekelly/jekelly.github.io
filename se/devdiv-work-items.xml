@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>DevDiv Work Items</ShortName>
+  <Description>Search DevDiv work items</Description>
+  <InputEncoding>UTF-8</InputEncoding>
+  
+  <Url type="text/html" template="https://dev.azure.com/devdiv/DevDiv/_search?text={searchTerms}*&amp;type=workitem&amp;lp=workitems-Team&amp;filters=Projects%7BDevDiv%7D&amp;pageSize=25"/>
+</OpenSearchDescription>

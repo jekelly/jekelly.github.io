@@ -7,7 +7,6 @@
     
     <!-- OpenSearch Registrations -->
     <link rel="search" type="application/opensearchdescription+xml" href="devdiv-code.xml" title="DevDiv Code" />
-    <!--
     <link rel="search" type="application/opensearchdescription+xml" href="devdiv-work-item.xml" title="DevDiv Work Item" />
     <link rel="search" type="application/opensearchdescription+xml" href="devdiv-work-items.xml" title="DevDiv Work Items" />
     <link rel="search" type="application/opensearchdescription+xml" href="devdiv-wiki.xml" title="DevDiv Wiki" />
@@ -18,7 +17,6 @@
     <link rel="search" type="application/opensearchdescription+xml" href="devdiv-experience.xml" title="DevDiv Experience" />
     <link rel="search" type="application/opensearchdescription+xml" href="session-id.xml" title="Session Id" />
     <link rel="search" type="application/opensearchdescription+xml" href="splunk.xml" title="Splunk" />
-    -->
     
     <style>
         body {
@@ -31,6 +29,27 @@
         h1 {
             color: #333;
             text-align: center;
+        }
+        .search-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .search-input {
+            width: 100%;
+            max-width: 400px;
+            padding: 12px 16px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+        .search-input:focus {
+            border-color: #0066cc;
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+        }
+        .search-input::placeholder {
+            color: #999;
         }
         .search-engines {
             list-style: none;
@@ -63,10 +82,62 @@
             font-family: monospace;
             font-size: 0.8em;
         }
+        .install-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.8em;
+            margin-left: 10px;
+        }
+        .install-btn:hover {
+            background: #218838;
+        }
+        .status {
+            font-size: 0.8em;
+            padding: 2px 6px;
+            border-radius: 3px;
+            margin-left: 10px;
+        }
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+        }
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .instructions {
+            background: #e9ecef;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
     </style>
 </head>
 <body>
     <h1>Search engines registered</h1>
+    
+    <div class="search-container">
+        <input 
+            type="search" 
+            class="search-input" 
+            placeholder="Try searching to discover available search engines..."
+            aria-label="Search input to help discover available search engines"
+            id="main-search"
+        />
+    </div>
+    
+    <div class="instructions">
+        <h3>How to add these search engines:</h3>
+        <ul>
+            <li><strong>Firefox:</strong> Look for a dropdown arrow in the address bar, or right-click in search bar → "Add [Engine Name]"</li>
+            <li><strong>Chrome/Edge:</strong> Go to Settings → Search engines → Manage search engines → Site search</li>
+            <li><strong>Manual:</strong> Click the "Install" button next to each search engine below</li>
+        </ul>
+    </div>
     
     <p>The following OpenSearch engines have been registered and are available in your browser:</p>
     
@@ -74,60 +145,137 @@
         <li>
             <a href="devdiv-code.xml">DevDiv Code</a> 
             <span class="shortcut">ddc</span>
+            <button class="install-btn" onclick="installSearchEngine('devdiv-code.xml', 'DevDiv Code')">Install</button>
+            <span class="status" id="status-devdiv-code" style="display:none;"></span>
             <div class="description">Search DevDiv code repository</div>
         </li>
         <li>
             <a href="devdiv-work-item.xml">DevDiv Work Item</a> 
             <span class="shortcut">ddwi</span>
+            <button class="install-btn" onclick="installSearchEngine('devdiv-work-item.xml', 'DevDiv Work Item')">Install</button>
+            <span class="status" id="status-devdiv-work-item" style="display:none;"></span>
             <div class="description">DevDiv work item editor</div>
         </li>
         <li>
             <a href="devdiv-work-items.xml">DevDiv Work Items</a> 
             <span class="shortcut">ddw</span>
+            <button class="install-btn" onclick="installSearchEngine('devdiv-work-items.xml', 'DevDiv Work Items')">Install</button>
+            <span class="status" id="status-devdiv-work-items" style="display:none;"></span>
             <div class="description">Search DevDiv work items</div>
         </li>
         <li>
             <a href="devdiv-wiki.xml">DevDiv Wiki</a> 
             <span class="shortcut">ddk</span>
+            <button class="install-btn" onclick="installSearchEngine('devdiv-wiki.xml', 'DevDiv Wiki')">Install</button>
+            <span class="status" id="status-devdiv-wiki" style="display:none;"></span>
             <div class="description">Search DevDiv wiki</div>
         </li>
         <li>
             <a href="devdiv-pr.xml">DevDiv PR</a> 
             <span class="shortcut">ddpr</span>
+            <button class="install-btn" onclick="installSearchEngine('devdiv-pr.xml', 'DevDiv PR')">Install</button>
+            <span class="status" id="status-devdiv-pr" style="display:none;"></span>
             <div class="description">DevDiv pull request viewer</div>
         </li>
         <li>
             <a href="msw.xml">Microsoft SharePoint</a> 
             <span class="shortcut">msw</span>
+            <button class="install-btn" onclick="installSearchEngine('msw.xml', 'Microsoft SharePoint')">Install</button>
+            <span class="status" id="status-msw" style="display:none;"></span>
             <div class="description">Microsoft SharePoint search</div>
         </li>
         <li>
             <a href="devdiv-user-story.xml">DevDiv User Story</a> 
             <span class="shortcut">ddus</span>
+            <button class="install-btn" onclick="installSearchEngine('devdiv-user-story.xml', 'DevDiv User Story')">Install</button>
+            <span class="status" id="status-devdiv-user-story" style="display:none;"></span>
             <div class="description">Search DevDiv user stories</div>
         </li>
         <li>
             <a href="ghquota.xml">GitHub Quota</a> 
             <span class="shortcut">ghquota</span>
+            <button class="install-btn" onclick="installSearchEngine('ghquota.xml', 'GitHub Quota')">Install</button>
+            <span class="status" id="status-ghquota" style="display:none;"></span>
             <div class="description">GitHub Copilot quotas</div>
         </li>
         <li>
             <a href="devdiv-experience.xml">DevDiv Experience</a> 
             <span class="shortcut">dde</span>
+            <button class="install-btn" onclick="installSearchEngine('devdiv-experience.xml', 'DevDiv Experience')">Install</button>
+            <span class="status" id="status-devdiv-experience" style="display:none;"></span>
             <div class="description">Search DevDiv experience work items</div>
         </li>
         <li>
             <a href="session-id.xml">Session Id</a> 
             <span class="shortcut">sid</span>
+            <button class="install-btn" onclick="installSearchEngine('session-id.xml', 'Session Id')">Install</button>
+            <span class="status" id="status-session-id" style="display:none;"></span>
             <div class="description">Azure Data Explorer session dashboard</div>
         </li>
         <li>
             <a href="splunk.xml">Splunk</a> 
             <span class="shortcut">splunk</span>
+            <button class="install-btn" onclick="installSearchEngine('splunk.xml', 'Splunk')">Install</button>
+            <span class="status" id="status-splunk" style="display:none;"></span>
             <div class="description">Splunk Copilot API search</div>
         </li>
     </ul>
-    
-    <p><strong>Note:</strong> To use these search engines, your browser may automatically detect them when you visit this page, or you can click on the XML links to manually add them to your browser's search engines.</p>
+
+    <script>
+        function installSearchEngine(xmlFile, title) {
+            const statusId = 'status-' + xmlFile.replace('.xml', '').replace(/[^a-z0-9-]/gi, '-');
+            const statusElement = document.getElementById(statusId);
+            
+            try {
+                // Try the legacy addSearchProvider method (Firefox)
+                if (window.external && window.external.AddSearchProvider) {
+                    const absoluteUrl = new URL(xmlFile, window.location.href).href;
+                    window.external.AddSearchProvider(absoluteUrl);
+                    showStatus(statusElement, 'Added to Firefox', 'success');
+                }
+                // For modern browsers, just navigate to the XML file
+                else {
+                    window.open(xmlFile, '_blank');
+                    showStatus(statusElement, 'XML opened - add manually', 'success');
+                }
+            } catch (error) {
+                console.error('Error installing search engine:', error);
+                showStatus(statusElement, 'Manual installation required', 'error');
+            }
+        }
+
+        function showStatus(element, message, type) {
+            element.textContent = message;
+            element.className = 'status ' + type;
+            element.style.display = 'inline';
+            
+            // Hide status after 3 seconds
+            setTimeout(() => {
+                element.style.display = 'none';
+            }, 3000);
+        }
+
+        // Check if OpenSearch is supported
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchLinks = document.querySelectorAll('link[rel="search"]');
+            console.log(`Found ${searchLinks.length} OpenSearch engines registered in HTML head`);
+            
+            // Log each search engine for debugging
+            searchLinks.forEach((link, index) => {
+                console.log(`OpenSearch ${index + 1}: ${link.title} -> ${link.href}`);
+            });
+
+            // Add focus event to search input to potentially trigger discovery
+            const searchInput = document.getElementById('main-search');
+            searchInput.addEventListener('focus', function() {
+                console.log('Search input focused - this may help browsers discover available search engines');
+            });
+
+            // Auto-focus the search input after a brief delay
+            setTimeout(() => {
+                searchInput.focus();
+            }, 500);
+        });
+    </script>
 </body>
 </html>

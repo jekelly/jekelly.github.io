@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>Splunk</ShortName>
+  <Description>Splunk Copilot API search</Description>
+  <InputEncoding>UTF-8</InputEncoding>
+  
+  <Url type="text/html" template="https://splunk.githubapp.com/en-US/app/search/search?q=search%20index%3Dcopilot-api%20{searchTerms}&amp;sid=1757350301.265440_2B940D30-B8F0-4B83-8631-442ABBEB6E40&amp;display.page.search.mode=smart&amp;dispatch.sample_ratio=1&amp;workload_pool=Standard&amp;earliest=-15m%40m&amp;latest=now"/>
+</OpenSearchDescription>

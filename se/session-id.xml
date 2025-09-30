@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>Session Id</ShortName>
+  <Description>Azure Data Explorer session dashboard</Description>
+  <InputEncoding>UTF-8</InputEncoding>
+  
+  <Url type="text/html" template="https://dataexplorer.azure.com/dashboards/00b25bb4-a2d3-4920-bfc1-ae726299f68e?p-_startTime=7days&amp;p-_endTime=now&amp;p-_sessionId=v-{searchTerms}&amp;p-_userId=all&amp;p-_functionName=all&amp;p-_eventId=all#0ef3114c-86e0-485e-be11-e1a43bad2ec4"/>
+</OpenSearchDescription>

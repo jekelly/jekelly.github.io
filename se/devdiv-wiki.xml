@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>DevDiv Wiki</ShortName>
+  <Description>Search DevDiv wiki</Description>
+  <InputEncoding>UTF-8</InputEncoding>
+  
+  <Url type="text/html" template="https://dev.azure.com/devdiv/DevDiv/_search?text={searchTerms}*&amp;type=wiki&amp;pageSize=25&amp;filters=Project%7BDevDiv%7D"/>
+</OpenSearchDescription>

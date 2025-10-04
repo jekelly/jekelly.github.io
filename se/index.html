@@ -145,137 +145,80 @@
         <li>
             <a href="https://jekellyopensearch.blob.core.windows.net/opensearch/devdiv-code.xml">DevDiv Code</a> 
             <span class="shortcut">ddc</span>
-            <button class="install-btn" onclick="installSearchEngine('devdiv-code.xml', 'DevDiv Code')">Install</button>
+            <button class="install-btn">Install</button>
             <span class="status" id="status-devdiv-code" style="display:none;"></span>
             <div class="description">Search DevDiv code repository</div>
         </li>
         <li>
             <a href="https://jekellyopensearch.blob.core.windows.net/opensearch/devdiv-work-item.xml">DevDiv Work Item</a> 
             <span class="shortcut">ddwi</span>
-            <button class="install-btn" onclick="installSearchEngine('devdiv-work-item.xml', 'DevDiv Work Item')">Install</button>
+            <button class="install-btn">Install</button>
             <span class="status" id="status-devdiv-work-item" style="display:none;"></span>
             <div class="description">DevDiv work item editor</div>
         </li>
         <li>
             <a href="https://jekellyopensearch.blob.core.windows.net/opensearch/devdiv-work-items.xml">DevDiv Work Items</a> 
             <span class="shortcut">ddw</span>
-            <button class="install-btn" onclick="installSearchEngine('devdiv-work-items.xml', 'DevDiv Work Items')">Install</button>
+            <button class="install-btn">Install</button>
             <span class="status" id="status-devdiv-work-items" style="display:none;"></span>
             <div class="description">Search DevDiv work items</div>
         </li>
         <li>
             <a href="https://jekellyopensearch.blob.core.windows.net/opensearch/devdiv-wiki.xml">DevDiv Wiki</a> 
             <span class="shortcut">ddk</span>
-            <button class="install-btn" onclick="installSearchEngine('devdiv-wiki.xml', 'DevDiv Wiki')">Install</button>
+            <button class="install-btn">Install</button>
             <span class="status" id="status-devdiv-wiki" style="display:none;"></span>
             <div class="description">Search DevDiv wiki</div>
         </li>
         <li>
             <a href="https://jekellyopensearch.blob.core.windows.net/opensearch/devdiv-pr.xml">DevDiv PR</a> 
             <span class="shortcut">ddpr</span>
-            <button class="install-btn" onclick="installSearchEngine('devdiv-pr.xml', 'DevDiv PR')">Install</button>
+            <button class="install-btn">Install</button>
             <span class="status" id="status-devdiv-pr" style="display:none;"></span>
             <div class="description">DevDiv pull request viewer</div>
         </li>
         <li>
             <a href="https://jekellyopensearch.blob.core.windows.net/opensearch/msw.xml">Microsoft SharePoint</a> 
             <span class="shortcut">msw</span>
-            <button class="install-btn" onclick="installSearchEngine('msw.xml', 'Microsoft SharePoint')">Install</button>
+            <button class="install-btn">Install</button>
             <span class="status" id="status-msw" style="display:none;"></span>
             <div class="description">Microsoft SharePoint search</div>
         </li>
         <li>
             <a href="https://jekellyopensearch.blob.core.windows.net/opensearch/devdiv-user-story.xml">DevDiv User Story</a> 
             <span class="shortcut">ddus</span>
-            <button class="install-btn" onclick="installSearchEngine('devdiv-user-story.xml', 'DevDiv User Story')">Install</button>
+            <button class="install-btn">Install</button>
             <span class="status" id="status-devdiv-user-story" style="display:none;"></span>
             <div class="description">Search DevDiv user stories</div>
         </li>
         <li>
             <a href="https://jekellyopensearch.blob.core.windows.net/opensearch/ghquota.xml">GitHub Quota</a> 
             <span class="shortcut">ghquota</span>
-            <button class="install-btn" onclick="installSearchEngine('ghquota.xml', 'GitHub Quota')">Install</button>
+            <button class="install-btn">Install</button>
             <span class="status" id="status-ghquota" style="display:none;"></span>
             <div class="description">GitHub Copilot quotas</div>
         </li>
         <li>
             <a href="https://jekellyopensearch.blob.core.windows.net/opensearch/devdiv-experience.xml">DevDiv Experience</a> 
             <span class="shortcut">dde</span>
-            <button class="install-btn" onclick="installSearchEngine('devdiv-experience.xml', 'DevDiv Experience')">Install</button>
+            <button class="install-btn">Install</button>
             <span class="status" id="status-devdiv-experience" style="display:none;"></span>
             <div class="description">Search DevDiv experience work items</div>
         </li>
         <li>
             <a href="https://jekellyopensearch.blob.core.windows.net/opensearch/session-id.xml">Session Id</a> 
             <span class="shortcut">sid</span>
-            <button class="install-btn" onclick="installSearchEngine('session-id.xml', 'Session Id')">Install</button>
+            <button class="install-btn">Install</button>
             <span class="status" id="status-session-id" style="display:none;"></span>
             <div class="description">Azure Data Explorer session dashboard</div>
         </li>
         <li>
             <a href="https://jekellyopensearch.blob.core.windows.net/opensearch/splunk.xml">Splunk</a> 
             <span class="shortcut">splunk</span>
-            <button class="install-btn" onclick="installSearchEngine('splunk.xml', 'Splunk')">Install</button>
+            <button class="install-btn">Install</button>
             <span class="status" id="status-splunk" style="display:none;"></span>
             <div class="description">Splunk Copilot API search</div>
         </li>
     </ul>
-
-    <script>
-        function installSearchEngine(xmlFile, title) {
-            const statusId = 'status-' + xmlFile.replace('.xml', '').replace(/[^a-z0-9-]/gi, '-');
-            const statusElement = document.getElementById(statusId);
-            
-            try {
-                // Try the legacy addSearchProvider method (Firefox)
-                if (window.external && window.external.AddSearchProvider) {
-                    const absoluteUrl = new URL(xmlFile, window.location.href).href;
-                    window.external.AddSearchProvider(absoluteUrl);
-                    showStatus(statusElement, 'Added to Firefox', 'success');
-                }
-                // For modern browsers, just navigate to the XML file
-                else {
-                    window.open(xmlFile, '_blank');
-                    showStatus(statusElement, 'XML opened - add manually', 'success');
-                }
-            } catch (error) {
-                console.error('Error installing search engine:', error);
-                showStatus(statusElement, 'Manual installation required', 'error');
-            }
-        }
-
-        function showStatus(element, message, type) {
-            element.textContent = message;
-            element.className = 'status ' + type;
-            element.style.display = 'inline';
-            
-            // Hide status after 3 seconds
-            setTimeout(() => {
-                element.style.display = 'none';
-            }, 3000);
-        }
-
-        // Check if OpenSearch is supported
-        document.addEventListener('DOMContentLoaded', function() {
-            const searchLinks = document.querySelectorAll('link[rel="search"]');
-            console.log(`Found ${searchLinks.length} OpenSearch engines registered in HTML head`);
-            
-            // Log each search engine for debugging
-            searchLinks.forEach((link, index) => {
-                console.log(`OpenSearch ${index + 1}: ${link.title} -> ${link.href}`);
-            });
-
-            // Add focus event to search input to potentially trigger discovery
-            const searchInput = document.getElementById('main-search');
-            searchInput.addEventListener('focus', function() {
-                console.log('Search input focused - this may help browsers discover available search engines');
-            });
-
-            // Auto-focus the search input after a brief delay
-            setTimeout(() => {
-                searchInput.focus();
-            }, 500);
-        });
-    </script>
 </body>
 </html>

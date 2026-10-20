@@ -1,224 +1,60 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Engines Registered</title>
-    
-    <!-- OpenSearch Registrations -->
-    <link rel="search" type="application/opensearchdescription+xml" href="https://jekellyopensearch.blob.core.windows.net/opensearch/devdiv-code.xml" title="DevDiv Code" />
-    <link rel="search" type="application/opensearchdescription+xml" href="https://jekellyopensearch.blob.core.windows.net/opensearch/devdiv-work-item.xml" title="DevDiv Work Item" />
-    <link rel="search" type="application/opensearchdescription+xml" href="https://jekellyopensearch.blob.core.windows.net/opensearch/devdiv-work-items.xml" title="DevDiv Work Items" />
-    <link rel="search" type="application/opensearchdescription+xml" href="https://jekellyopensearch.blob.core.windows.net/opensearch/devdiv-wiki.xml" title="DevDiv Wiki" />
-    <link rel="search" type="application/opensearchdescription+xml" href="https://jekellyopensearch.blob.core.windows.net/opensearch/devdiv-pr.xml" title="DevDiv PR" />
-    <link rel="search" type="application/opensearchdescription+xml" href="https://jekellyopensearch.blob.core.windows.net/opensearch/msw.xml" title="Microsoft SharePoint" />
-    <link rel="search" type="application/opensearchdescription+xml" href="https://jekellyopensearch.blob.core.windows.net/opensearch/devdiv-user-story.xml" title="DevDiv User Story" />
-    <link rel="search" type="application/opensearchdescription+xml" href="https://jekellyopensearch.blob.core.windows.net/opensearch/ghquota.xml" title="GitHub Quota" />
-    <link rel="search" type="application/opensearchdescription+xml" href="https://jekellyopensearch.blob.core.windows.net/opensearch/devdiv-experience.xml" title="DevDiv Experience" />
-    <link rel="search" type="application/opensearchdescription+xml" href="https://jekellyopensearch.blob.core.windows.net/opensearch/session-id.xml" title="Session Id" />
-    <link rel="search" type="application/opensearchdescription+xml" href="https://jekellyopensearch.blob.core.windows.net/opensearch/splunk.xml" title="Splunk" />
-    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Edge search shortcuts</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            line-height: 1.6;
-        }
-        h1 {
-            color: #333;
-            text-align: center;
-        }
-        .search-container {
-            text-align: center;
-            margin: 20px 0;
-        }
-        .search-input {
-            width: 100%;
-            max-width: 400px;
-            padding: 12px 16px;
-            font-size: 16px;
-            border: 2px solid #ddd;
-            border-radius: 25px;
-            outline: none;
-            transition: border-color 0.3s ease;
-        }
-        .search-input:focus {
-            border-color: #0066cc;
-            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
-        }
-        .search-input::placeholder {
-            color: #999;
-        }
-        .search-engines {
-            list-style: none;
-            padding: 0;
-        }
-        .search-engines li {
-            margin: 10px 0;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-        }
-        .search-engines a {
-            color: #0066cc;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .search-engines a:hover {
-            text-decoration: underline;
-        }
-        .description {
-            color: #666;
-            font-size: 0.9em;
-            margin-top: 5px;
-        }
-        .shortcut {
-            background: #e6f3ff;
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-family: monospace;
-            font-size: 0.8em;
-        }
-        .install-btn {
-            background: #28a745;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 3px;
-            cursor: pointer;
-            font-size: 0.8em;
-            margin-left: 10px;
-        }
-        .install-btn:hover {
-            background: #218838;
-        }
-        .status {
-            font-size: 0.8em;
-            padding: 2px 6px;
-            border-radius: 3px;
-            margin-left: 10px;
-        }
-        .status.success {
-            background: #d4edda;
-            color: #155724;
-        }
-        .status.error {
-            background: #f8d7da;
-            color: #721c24;
-        }
-        .instructions {
-            background: #e9ecef;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 20px 0;
-        }
+        :root { color-scheme: light dark; font-family: system-ui, sans-serif; line-height: 1.6; }
+        body { max-width: 800px; margin: 0 auto; padding: 24px; }
+        h1, h2 { line-height: 1.2; }
+        pre { padding: 16px; border: 1px solid #888; border-radius: 8px; overflow-x: auto; }
+        code, kbd { font-family: ui-monospace, monospace; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid #888; }
+        a { color: light-dark(#005ea8, #8cc8ff); }
     </style>
 </head>
 <body>
-    <h1>Search engines registered</h1>
-    
-    <div class="search-container">
-        <input 
-            type="search" 
-            class="search-input" 
-            placeholder="Try searching to discover available search engines..."
-            aria-label="Search input to help discover available search engines"
-            id="main-search"
-        />
-    </div>
-    
-    <div class="instructions">
-        <h3>How to add these search engines:</h3>
-        <ul>
-            <li><strong>Firefox:</strong> Look for a dropdown arrow in the address bar, or right-click in search bar → "Add [Engine Name]"</li>
-            <li><strong>Chrome/Edge:</strong> Go to Settings → Search engines → Manage search engines → Site search</li>
-            <li><strong>Manual:</strong> Click the "Install" button next to each search engine below</li>
-        </ul>
-    </div>
-    
-    <p>The following OpenSearch engines have been registered and are available in your browser:</p>
-    
-    <ul class="search-engines">
-        <li>
-            <a href="https://jekellyopensearch.blob.core.windows.net/opensearch/devdiv-code.xml">DevDiv Code</a> 
-            <span class="shortcut">ddc</span>
-            <button class="install-btn">Install</button>
-            <span class="status" id="status-devdiv-code" style="display:none;"></span>
-            <div class="description">Search DevDiv code repository</div>
-        </li>
-        <li>
-            <a href="https://jekellyopensearch.blob.core.windows.net/opensearch/devdiv-work-item.xml">DevDiv Work Item</a> 
-            <span class="shortcut">ddwi</span>
-            <button class="install-btn">Install</button>
-            <span class="status" id="status-devdiv-work-item" style="display:none;"></span>
-            <div class="description">DevDiv work item editor</div>
-        </li>
-        <li>
-            <a href="https://jekellyopensearch.blob.core.windows.net/opensearch/devdiv-work-items.xml">DevDiv Work Items</a> 
-            <span class="shortcut">ddw</span>
-            <button class="install-btn">Install</button>
-            <span class="status" id="status-devdiv-work-items" style="display:none;"></span>
-            <div class="description">Search DevDiv work items</div>
-        </li>
-        <li>
-            <a href="https://jekellyopensearch.blob.core.windows.net/opensearch/devdiv-wiki.xml">DevDiv Wiki</a> 
-            <span class="shortcut">ddk</span>
-            <button class="install-btn">Install</button>
-            <span class="status" id="status-devdiv-wiki" style="display:none;"></span>
-            <div class="description">Search DevDiv wiki</div>
-        </li>
-        <li>
-            <a href="https://jekellyopensearch.blob.core.windows.net/opensearch/devdiv-pr.xml">DevDiv PR</a> 
-            <span class="shortcut">ddpr</span>
-            <button class="install-btn">Install</button>
-            <span class="status" id="status-devdiv-pr" style="display:none;"></span>
-            <div class="description">DevDiv pull request viewer</div>
-        </li>
-        <li>
-            <a href="https://jekellyopensearch.blob.core.windows.net/opensearch/msw.xml">Microsoft SharePoint</a> 
-            <span class="shortcut">msw</span>
-            <button class="install-btn">Install</button>
-            <span class="status" id="status-msw" style="display:none;"></span>
-            <div class="description">Microsoft SharePoint search</div>
-        </li>
-        <li>
-            <a href="https://jekellyopensearch.blob.core.windows.net/opensearch/devdiv-user-story.xml">DevDiv User Story</a> 
-            <span class="shortcut">ddus</span>
-            <button class="install-btn">Install</button>
-            <span class="status" id="status-devdiv-user-story" style="display:none;"></span>
-            <div class="description">Search DevDiv user stories</div>
-        </li>
-        <li>
-            <a href="https://jekellyopensearch.blob.core.windows.net/opensearch/ghquota.xml">GitHub Quota</a> 
-            <span class="shortcut">ghquota</span>
-            <button class="install-btn">Install</button>
-            <span class="status" id="status-ghquota" style="display:none;"></span>
-            <div class="description">GitHub Copilot quotas</div>
-        </li>
-        <li>
-            <a href="https://jekellyopensearch.blob.core.windows.net/opensearch/devdiv-experience.xml">DevDiv Experience</a> 
-            <span class="shortcut">dde</span>
-            <button class="install-btn">Install</button>
-            <span class="status" id="status-devdiv-experience" style="display:none;"></span>
-            <div class="description">Search DevDiv experience work items</div>
-        </li>
-        <li>
-            <a href="https://jekellyopensearch.blob.core.windows.net/opensearch/session-id.xml">Session Id</a> 
-            <span class="shortcut">sid</span>
-            <button class="install-btn">Install</button>
-            <span class="status" id="status-session-id" style="display:none;"></span>
-            <div class="description">Azure Data Explorer session dashboard</div>
-        </li>
-        <li>
-            <a href="https://jekellyopensearch.blob.core.windows.net/opensearch/splunk.xml">Splunk</a> 
-            <span class="shortcut">splunk</span>
-            <button class="install-btn">Install</button>
-            <span class="status" id="status-splunk" style="display:none;"></span>
-            <div class="description">Splunk Copilot API search</div>
-        </li>
-    </ul>
+    <h1>Edge search shortcuts</h1>
+    <p>Add these providers to Microsoft Edge. To search, type a shortcut such as
+        <kbd>ddc</kbd> in the address bar, press <kbd>Tab</kbd>, then enter your search.</p>
+
+    <h2>Install</h2>
+    <p>Open PowerShell as administrator and paste this command.
+        Confirm the installation when prompted.</p>
+    <pre aria-label="PowerShell install command"><code id="install-command">irm 'https://www.jkly.me/se/Install-EdgeSearchEngines.ps1' | iex</code></pre>
+    <p><a href="Install-EdgeSearchEngines.ps1">Bootstrap</a> &middot;
+        <a href="Manage-EdgeSearchEngines.ps1">Installer</a> &middot;
+        <a href="managed-search-engines.json">Provider list</a></p>
+    <p><strong>Fully exit and restart Edge afterward.</strong>
+        Check <code>edge://policy</code> for <code>ManagedSearchEngines</code>
+        and <code>edge://settings/searchEngines</code> for your shortcuts.</p>
+
+    <h2>Providers</h2>
+    <table>
+        <thead><tr><th scope="col">Provider</th><th scope="col">Shortcut</th></tr></thead>
+        <tbody>
+            <tr><td>Bing (recommended default)</td><td><code>bing.com</code></td></tr>
+            <tr><td>DevDiv Code</td><td><code>ddc</code></td></tr>
+            <tr><td>DevDiv Work Item</td><td><code>ddwi</code></td></tr>
+            <tr><td>DevDiv Work Items</td><td><code>ddw</code></td></tr>
+            <tr><td>DevDiv Wiki</td><td><code>ddk</code></td></tr>
+            <tr><td>DevDiv PR</td><td><code>ddpr</code></td></tr>
+            <tr><td>Microsoft SharePoint</td><td><code>msw</code></td></tr>
+            <tr><td>DevDiv User Story</td><td><code>ddus</code></td></tr>
+            <tr><td>GitHub Quota</td><td><code>ghquota</code></td></tr>
+            <tr><td>DevDiv Experience</td><td><code>dde</code></td></tr>
+            <tr><td>Session Id</td><td><code>sid</code></td></tr>
+            <tr><td>Splunk</td><td><code>splunk</code></td></tr>
+        </tbody>
+    </table>
+
+    <h2>Remove</h2>
+    <p>Keep the downloaded files together and unchanged. In the saved folder,
+        run the following, then fully exit and restart Edge:</p>
+    <pre><code>.\Manage-EdgeSearchEngines.ps1 -Action Remove -Confirm</code></pre>
+    <p>This removes the policy recommendation; Edge may retain search entries
+        or your default preference.</p>
 </body>
 </html>

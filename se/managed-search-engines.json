@@ -1,0 +1,66 @@
+[
+  {
+    "allow_search_engine_discovery": true
+  },
+  {
+    "name": "Bing",
+    "keyword": "bing.com",
+    "search_url": "https://www.bing.com/search?q={searchTerms}",
+    "is_default": true
+  },
+  {
+    "name": "DevDiv Code",
+    "keyword": "ddc",
+    "search_url": "https://dev.azure.com/devdiv/DevDiv/_search?text={searchTerms}*&type=code&pageSize=25&filters=ProjectFilters%7BDevDiv%7D&action=contents"
+  },
+  {
+    "name": "DevDiv Work Item",
+    "keyword": "ddwi",
+    "search_url": "https://dev.azure.com/devdiv/DevDiv/_queries/edit/{searchTerms}"
+  },
+  {
+    "name": "DevDiv Work Items",
+    "keyword": "ddw",
+    "search_url": "https://dev.azure.com/devdiv/DevDiv/_search?text={searchTerms}*&type=workitem&lp=workitems-Team&filters=Projects%7BDevDiv%7D&pageSize=25"
+  },
+  {
+    "name": "DevDiv Wiki",
+    "keyword": "ddk",
+    "search_url": "https://dev.azure.com/devdiv/DevDiv/_search?text={searchTerms}*&type=wiki&pageSize=25&filters=Project%7BDevDiv%7D"
+  },
+  {
+    "name": "DevDiv PR",
+    "keyword": "ddpr",
+    "search_url": "https://dev.azure.com/devdiv/DevDiv/_git/VisualStudio.Conversations/pullrequest/{searchTerms}"
+  },
+  {
+    "name": "Microsoft SharePoint",
+    "keyword": "msw",
+    "search_url": "https://microsoft.sharepoint.com/_layouts/15/search.aspx/?q={searchTerms}"
+  },
+  {
+    "name": "DevDiv User Story",
+    "keyword": "ddus",
+    "search_url": "https://dev.azure.com/devdiv/DevDiv/_search?text=t%3A%22user+story%22+{searchTerms}*&type=workitem&lp=workitems-Team&filters=Projects%7BDevDiv%7D&pageSize=25"
+  },
+  {
+    "name": "GitHub Quota",
+    "keyword": "ghquota",
+    "search_url": "https://github.com/github-copilot/quotas/{searchTerms}"
+  },
+  {
+    "name": "DevDiv Experience",
+    "keyword": "dde",
+    "search_url": "https://dev.azure.com/devdiv/DevDiv/_search?text=t%3Aexperience+{searchTerms}*&type=workitem&lp=workitems-Team&filters=Projects%7BDevDiv%7D&pageSize=25"
+  },
+  {
+    "name": "Session Id",
+    "keyword": "sid",
+    "search_url": "https://dataexplorer.azure.com/dashboards/00b25bb4-a2d3-4920-bfc1-ae726299f68e?p-_startTime=7days&p-_endTime=now&p-_sessionId=v-{searchTerms}&p-_userId=all&p-_functionName=all&p-_eventId=all#0ef3114c-86e0-485e-be11-e1a43bad2ec4"
+  },
+  {
+    "name": "Splunk",
+    "keyword": "splunk",
+    "search_url": "https://splunk.githubapp.com/en-US/app/search/search?q=search%20index%3Dcopilot-api%20{searchTerms}&sid=1757350301.265440_2B940D30-B8F0-4B83-8631-442ABBEB6E40&display.page.search.mode=smart&dispatch.sample_ratio=1&workload_pool=Standard&earliest=-15m%40m&latest=now"
+  }
+]
